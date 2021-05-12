@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "杭州松格科技有限公司",
+  "navigationStyle":"custom",
+  "usingComponents": {
+    "i-switch": "../../../common/dist/switch/index",
+    "van-radio": "../../../common/distVant/radio/index",
+    "van-radio-group": "../../../common/distVant/radio-group/index"
+  }
+}

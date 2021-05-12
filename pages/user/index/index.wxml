@@ -1,0 +1,79 @@
+<view class="top" style="padding-top:{{navBtnHeight}}rpx">
+		<view class="userImg left">
+			<image src="{{userImg}}"></image>
+		</view>
+			<view class="userInfo left">
+				<view class="userName">推广员：{{userName}}</view>
+			</view>
+		</view>
+		<view class="center boxShadow borderRadius margin">
+			<view class="content">
+				<view class="block yellow" data-index="0" bindtap="next">
+					<image src="/static/pic02.png" mode="widthFix"></image>
+				</view>
+				<p>我要推广</p>
+			</view>
+			<view class="content">
+				<view class="block not" data-index="1" bindtap="next">
+					<image src="/static/pic03.png" mode="widthFix"></image>
+				</view>
+				<p>待审企业</p>
+			</view>
+			<view class="content">
+				<view class="block success" data-index="2" bindtap="next">
+					<image src="/static/pic04.png" mode="widthFix"></image>
+				</view>
+				<p>审核成功</p>
+			</view>
+			<view class="content">
+				<view class="block fail" data-index="3" bindtap="next">
+					<image src="/static/pic05.png" mode="widthFix"></image>
+				</view>
+				<p>审核失败</p>
+			</view>
+		</view>
+		<view class="bottom">
+			<p class="title margin">最新待审核企业列表</p>
+			<view class="box">
+				<view class="block" wx:if="{{reView.length==0}}">
+					<text>{{listInfo}}</text>
+				</view>
+				<view class="block" wx:else>
+					<view wx:for="{{reView}}" :key="index" data-id="{{item.id}}" bindtap="go" class="cont clearfix borderRadius boxShadow">
+						<view class="firmImg left notB">
+							<text class="font">{{item.first}}</text>
+						</view>
+						<view class="firmInfo right">
+							<view class="firmName">
+								<view class="name">{{item.enterpriseName}}</view>
+								<view class="staus not">待审</view>
+							</view>
+							<view class="firmPro">
+								<view class="pro left">申请人：{{item.legalPerson}}</view>
+								<view class="time right">申请时间：{{item.createDate}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+				
+		</view>
+		<view class="point" wx:if="{{point}}">
+			<view class="box">
+				<view class="boxContent">
+					<view class="pointView">
+						提示
+					</view>
+					<view class="title">需要用户授权才能享受很好的微信服务.</view>
+					<view class="pointBtn">
+						<view class="firstBtn" bindtap="callOff">
+							取消
+						</view>
+						<view class="secondBtn">
+							授权
+							<button class="sbBtn" bindtap="shouquan" open-type='getUserInfo'></button>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+</view>

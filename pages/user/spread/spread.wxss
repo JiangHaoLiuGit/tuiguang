@@ -1,0 +1,68 @@
+/* pages/spread/spread.wxss */
+.spread {
+  padding: 76rpx 30rpx 100rpx;
+}
+.spread .name{
+  font-size: 28rpx;
+  line-height: 38rpx;
+  margin-bottom: 26rpx;
+  color: #333;
+}
+.spread .input{
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 38rpx;
+  padding-left: 20rpx;
+  background: #fff;
+  border: 2rpx solid #E3E3E3;
+  border-radius: 8rpx;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  z-index: 10;
+}
+.spread .input image.last{
+  position: absolute;
+  top: 35rpx;
+  right: 35rpx;
+  width: 16rpx;
+  height: 9rpx;
+  z-index: 1;
+}
+.spread picker .text{
+  width: 100%;
+  height: 80rpx;
+  display: block;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.spread .btn{
+  position: absolute;
+  bottom: 98rpx;
+  left: 30rpx;
+  width: 690rpx;
+  background: #2E95FA;
+  font-size: 40rpx;
+}
+.spread .btn[disabled]{
+  background: #CCCCCC;
+  color: #666666;
+}
+.firmPact{
+  padding-top: 60rpx;
+}
+.loginForm{
+  height: 300rpx;
+}
+.firmName{
+  position: relative;
+}
+.firmName .text{
+  position: absolute;
+  bottom: -34rpx;
+  left: 0rpx;
+  font-size: 28rpx;
+  line-height: 38rpx;
+  color: red;
+}

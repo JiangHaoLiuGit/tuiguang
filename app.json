@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/firm/firmRegist/firmRegist",
+    "pages/login/login",
+    
+    "pages/firm/pending/pending",
+    "pages/user/index/index",
+    "pages/firm/success/success",
+    "pages/user/spread/spread",
+    "pages/firm/firmList/firmList",
+    "pages/user/code/code"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "微信小程序",
+    "navigationBarBackgroundColor": "#fff",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

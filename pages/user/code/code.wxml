@@ -1,0 +1,24 @@
+<view class="page">
+  <view class="headTop" style="padding-top:{{navTop}}rpx;height:{{navBtnHeight}}rpx;line-height:{{navBtnHeight}}rpx;padding-bottom:{{navBtnBottom}}rpx">
+    <view class="img">
+      <view class="block" bindtap="navBack"></view>
+      <image class="to" src="../../../static/bigBack.png"></image>
+    </view>
+    <view class="view">生成企业推广码</view>
+  </view>
+  <view class="blockBox">
+    <view class="por">
+      <view class="poa child">
+        <text class="title">邀请码验证</text>
+        <form class="form2 form" bindsubmit="buttonSubmit2">
+          <view class="tit">
+          </view>
+          <view class="input">
+            <input type="number" name="yanzhen" placeholder="请输入邀请码"/>
+          </view>
+          <button form-type="submit">确认提交</button>
+        </form>
+      </view>
+    </view>
+  </view>
+</view>

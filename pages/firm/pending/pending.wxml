@@ -1,0 +1,134 @@
+<!--pages/firm/pending/pending.wxml-->
+<view>
+  <view class="headTop" style="padding-top:{{navTop}}rpx;height:{{navBtnHeight}}rpx;line-height:{{navBtnHeight}}rpx;padding-bottom:{{navBtnBottom}}rpx">
+      <view class="img">
+        <view class="block" bindtap="navBack"></view>
+        <image class="to" src="../../../static/bigBack.png"></image>
+      </view>
+    	<view class="view">{{firmData.abbreviation}}</view>
+  </view>
+  <view class="top clearfix marginTop" style="margin-top:{{navHeight}}rpx">
+    <image src="/static/pic17.png"></image>
+    <view class="txt">
+      <text>申请注册</text>
+      <text>等待审核</text>
+      <text class="color">审核成功</text>
+    </view>
+  </view>
+  <view class="center">
+    <view class="conten clearfix">
+      <text class="left">企业类型</text>
+      <text class="right">国有企业</text>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">营业执照</text>
+      <text class="right">{{firmData.licenseCode}}</text>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">企业法人</text>
+      <text class="right">{{firmData.legalPerson}}</text>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">法人身份证</text>
+      <text class="right">{{firmData.legalCard}}</text>
+    </view>
+    <view class="conten clearfix" wx:if="{{firmData.authorizedCardUrl!=firmData.legalCardUrl}}">
+      <text class="left">被授权人</text>
+      <text class="right">{{firmData.authorizedName}}</text>
+    </view>
+    <view class="conten clearfix" wx:if="{{firmData.authorizedCardUrl!=firmData.legalCardUrl}}">
+      <text class="left">被授权人手机</text>
+      <text class="right">{{firmData.authorizedPhone}}</text>
+    </view>
+    <view class="conten clearfix" wx:if="{{firmData.authorizedCardUrl==firmData.legalCardUrl}}">
+      <text class="left">法人手机号</text>
+      <text class="right">{{firmData.authorizedPhone}}</text>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">企业附件</text>
+    </view>
+    <view class="pic">
+      <view class="box">
+        <view class="img">
+          <image src="{{firmData.licenseUrl}}" data-value="{{firmData.licenseUrl}}" bindtap="succ2" mode="aspectFit"></image>
+        </view>
+        <text>营业执照</text>
+      </view>
+      <view class="box" wx:if="{{firmData.authorizedCardUrl!=firmData.legalCardUrl}}">
+        <view class="img">
+          <image src="{{firmData.authorizedCardUrl}}" data-value="{{firmData.authorizedCardUrl}}" bindtap="succ2" mode="aspectFit"></image>
+        </view>
+        <text>授权书</text>
+      </view>
+      <view class="box">
+        <view class="img">
+          <image src="{{firmData.legalCardUrl}}" data-value="{{firmData.legalCardUrl}}" bindtap="succ2" mode="aspectFit"></image>
+        </view>
+        <text>法人身份证</text>
+      </view>
+    </view>
+    <view class="butt clearfix">
+      <button bindtap="succ" class="success left">通过</button>
+      <button bindtap="fail" class="fail right">拒绝</button>
+    </view>
+  </view>
+</view>
+<view class="blockBox" hidden="{{!hidd1}}">
+  <view class="por" catchtap="por1">
+    <view class="poa child" catchtap="poa1">
+      <text class="title">企业审核成功</text>
+      <form class="form1 form" bindsubmit="buttonSubmit">
+        <view class="tit">
+          <text class="item">VIP等级：</text>
+        </view>
+        <view class="check">
+          <!-- <radio-group class="group" bindchange="radioChange">
+            <label wx:for="{{items}}" wx:key="{{item.value}}">
+                <radio class="checkbox" value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+            </label>
+          </radio-group> -->
+          <van-radio-group value="{{ radio }}" bindchange="radioChange">
+            <van-radio wx:for="{{items}}" wx:key="{{item.value}}" name="{{item.name}}" shape="square">{{item.value}}</van-radio>
+          </van-radio-group>
+        </view>
+        <button form-type="submit">确认提交</button>
+      </form>
+    </view>
+  </view>
+</view>
+<view class="blockBox" hidden="{{!hidd2}}">
+  <view class="por" catchtap="por2">
+    <view class="poa child" catchtap="poa2">
+      
+      <text class="title">注册内容不符</text>
+      <form class="form2 form" bindsubmit="buttonSubmit2">
+        <view class="tit">
+          <text class="item">原因：</text>
+          <textarea bindinput="bindTextArea" bindblur="blurTextArea" value="{{textArea}}" maxlength="100" auto-height placeholder="请输入拒绝通过具体原因" />
+          <view class="viewNumber red" wx:if="{{jianBlean}}">
+            <view class="new left">{{jianNumber}}</view>
+            <view class="max left">/{{maxLength}}</view>
+          </view>
+          <view class="viewNumber" wx:else>
+            <view class="new left">{{jianNumber}}</view>
+            <view class="max left">/{{maxLength}}</view>
+          </view>
+        </view>
+        <view class="switch clearfix">
+          <text class="left">是否重新修改注册信息：</text>
+          <i-switch class="right" value="{{switchChecked}}" size="default" bind:change="switchChange" slot="footer">
+              <view slot="open">是</view>
+              <view slot="close">否</view>
+          </i-switch>
+          <!-- <switch class="right" checked="{{switchChecked}}" bindchange="switchChange"/> -->
+        </view>
+        <button form-type="submit" disabled="{{btnDisabled}}">确认提交</button>
+      </form>
+    </view>
+  </view>
+</view>
+<view class="blockBox" hidden="{{!hidd3}}">
+  <view class="por por3" catchtap="por3">
+    <image src="{{imgSrc}}" bindload="imageLoad" data-index="0" style="width:{{imagesWidth}}rpx;height:{{imagesHeight}}rpx;" mode="aspectFit"></image>
+  </view>
+</view>

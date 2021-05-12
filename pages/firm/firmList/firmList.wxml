@@ -1,0 +1,188 @@
+<!--pages/firm/firmList/firmList.wxml-->
+<view>
+  <view class="head" style="height:{{headHeight}}rpx">
+		<view class="headTop" style="padding-top:{{navTop}}rpx;height:{{navBtnHeight}}rpx;line-height:{{navBtnHeight}}rpx">
+			<view class="img">
+				<view class="block" bindtap="navBack"></view>
+				<image class="to" src="../../../static/bigBack.png"></image>
+			</view>
+    	<view class="view">注册企业清单</view>
+		</view>
+    
+    <view class="tab contener">
+      <view class="cont {{state == 0 ? 'active' : ''}}" data-index="0" bindtap="tab">全部企业</view>
+      <view class="cont {{state == 1 ? 'active' : ''}}" data-index="1" bindtap="tab">等待审核</view>
+      <view class="cont {{state == 2 ? 'active' : ''}}" data-index="2" bindtap="tab">审核成功</view>
+      <view class="cont {{state == 3 ? 'active' : ''}}" data-index="3" bindtap="tab">审核失败</view>
+    </view>
+  </view>
+  <view class="tabView" catchtap="tabView" style="margin-top:{{headHeight}}rpx">
+		<!-- 全部企业 -->
+    <vie class="content" wx:if='{{state == 0}}'>
+			<view class="contFail" wx:if="{{reView.length==0}}">
+				<view class="failViews">{{failName}}</view>
+			</view>
+			<view class="contFail" wx:else>
+				<view wx:for="{{reView}}" :key="index" data-state="{{item.auditState}}" data-id="{{item.id}}" catchtap="enter" class="cont {{item.auditState == 2?'failCont':''}} clearfix borderRadius boxShadow">
+					<block wx:if="{{item.auditState != 2}}">
+						<view class="firmImg left {{item.auditState == 0 ? 'notB':''}}{{item.auditState == 1 ? 'successB':''}}{{item.auditState == 2 ? 'failB':''}}">
+							<text class="font">{{item.first}}</text>
+						</view>
+						<view class="firmInfo right">
+							<view class="firmName">
+								<view class="name">{{item.enterpriseName}} </view>
+								<view wx:if="{{item.auditState==0}}" class="staus not">待审</view>
+								<view wx:elif="{{item.auditState==1}}" class="staus success">成功</view>
+								<view wx:else class="staus fail">失败</view>
+							</view>
+							<view class="firmPro">
+								<view class="pro left">申请人：{{item.legalPerson}}</view>
+								<view class="time right">申请时间：{{item.createDate}}</view>
+							</view>
+						</view>
+					</block>
+					<block wx:elif="{{item.auditState == 2}}">
+						<view class="failView por clearfix" data-state="{{item.auditState}}" data-index="{{index}}" data-name="reView" data-id="{{item.id}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" catchtap="touchC" style="left:{{item.left + 'rpx'}}">
+							<view class="firmImg left {{item.auditState == 0 ? 'notB':''}}{{item.auditState == 1 ? 'successB':''}}{{item.auditState == 2 ? 'failB':''}}">
+								<text class="font">{{item.first}}</text>
+							</view>
+							<view class="firmInfo right">
+								<view class="firmName">
+									<view class="name">{{item.enterpriseName}} </view>
+									<view wx:if="{{item.auditState==0}}" class="staus not">待审</view>
+									<view wx:elif="{{item.auditState==1}}" class="staus success">成功</view>
+									<view wx:else class="staus fail">失败</view>
+								</view>
+								<view class="firmPro">
+									<view class="pro left">申请人：{{item.legalPerson}}</view>
+									<view class="time right">申请时间：{{item.createDate}}</view>
+								</view>
+							</view>
+						</view>
+						<view class="bottonView clearfix">
+							<button class="firmSrc right" bindtap="goBtn" data-id="{{item.id}}" data-name="{{item.enterpriseName}} ">
+								<image src="/static/pic18.png"></image>
+								<text>重新注册</text>
+							</button>
+						</view>
+						<view class="firmFail" wx:if="{{item.hidden == true}}">
+							<text>拒绝原因：{{reason}}</text>
+						</view>
+					</block>
+					
+				</view>
+			</view>
+			
+		</vie>
+		<!-- 等待企业 -->
+		
+		<vie class="content" wx:if='{{state == 1}}'>
+			<view class="contFail" wx:if="{{reView1.length==0}}">
+				<view class="failViews">{{failName}}</view>
+			</view>
+			<view class="contFail" wx:else>
+				<view wx:for="{{reView1}}" :key="index" data-state="{{item.auditState}}" data-id="{{item.id}}" catchtap="enter" class="cont clearfix borderRadius boxShadow">
+					<view class="firmImg left {{item.auditState == 0 ? 'notB':''}}{{item.auditState == 1 ? 'successB':''}}{{item.auditState == 2 ? 'failB':''}}">
+						<text class="font">{{item.first}}</text>
+					</view>
+					<view class="firmInfo right">
+						<view class="firmName">
+							<view class="name">{{item.enterpriseName}} </view>
+							<view wx:if="{{item.auditState==0}}" class="staus not">待审</view>
+							<view wx:elif="{{item.auditState==1}}" class="staus success">成功</view>
+							<view wx:else class="staus fail">失败</view>
+						</view>
+						<view class="firmPro">
+							<view class="pro left">申请人：{{item.legalPerson}}</view>
+							<view class="time right">申请时间：{{item.createDate}}</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			
+		</vie>
+		<!-- 成功企业 -->
+		<vie class="content" wx:if='{{state == 2}}'>
+			<view class="contFail" wx:if="{{reView2.length==0}}">
+				<view class="failViews">{{failName}}</view>
+			</view>
+			<view class="contFail" wx:else>
+				<view wx:for="{{reView2}}" :key="index" data-state="{{item.auditState}}" data-id="{{item.id}}" catchtap="enter" class="cont clearfix borderRadius boxShadow">
+					<view class="firmImg left {{item.auditState == 0 ? 'notB':''}}{{item.auditState == 1 ? 'successB':''}}{{item.auditState == 2 ? 'failB':''}}">
+						<text class="font">{{item.first}}</text>
+					</view>
+					<view class="firmInfo right">
+						<view class="firmName">
+							<view class="name">{{item.enterpriseName}} </view>
+							<view wx:if="{{item.auditState==0}}" class="staus not">待审</view>
+							<view wx:elif="{{item.auditState==1}}" class="staus success">成功</view>
+							<view wx:else class="staus fail">失败</view>
+						</view>
+						<view class="firmPro">
+							<view class="pro left">申请人：{{item.legalPerson}}</view>
+							<view class="time right">申请时间：{{item.createDate}}</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</vie>
+		<!-- 失败企业 -->
+		<vie class="content" wx:if='{{state == 3}}'>
+
+			<!-- <view class="contFail" wx:if="{{reView3.length==0}}">
+				<view class="failViews">{{failName}}</view>
+			</view>
+			<view class="contFail" wx:else> -->
+				<view wx:for="{{reView3}}" wx:key="index" class="cont failCont clearfix borderRadius boxShadow">
+					<view class="failView por clearfix" data-state="{{item.auditState}}" data-id="{{item.id}}" catchtap="enter" data-name="reView3" data-index="{{index}}" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" catchtap="touchC" style="left:{{item.left + 'rpx'}}">
+						<view class="firmImg left {{item.auditState == 0 ? 'notB':''}}{{item.auditState == 1 ? 'successB':''}}{{item.auditState == 2 ? 'failB':''}}">
+							<text class="font">{{item.first}}</text>
+						</view>
+						<view class="firmInfo right">
+							<view class="firmName">
+								<view class="name">{{item.enterpriseName}}</view>
+								<view wx:if="{{item.auditState==0}}" class="staus not">待审</view>
+								<view wx:elif="{{item.auditState==1}}" class="staus success">成功</view>
+								<view wx:else class="staus fail">失败</view>
+							</view>
+							<view class="firmPro">
+								<view class="pro left">申请人：{{item.legalPerson}}</view>
+								<view class="time right">申请时间：{{item.createDate}}</view>
+							</view>
+						</view>
+					</view>
+					<view class="bottonView clearfix">
+						<button class="firmSrc right" bindtap="goBtn" data-id="{{item.id}}" data-name="{{item.enterpriseName}} ">
+							<image src="/static/pic18.png"></image>
+							<text>重新注册</text>
+						</button>
+					</view>
+					<view class="firmFail" wx:if="{{item.hidden == true}}">
+						<text>拒绝原因：{{reason}}</text>
+						<!-- 鹅鹅鹅鹅鹅切后排朋你明明莫名民工咩您11咩您破高工资二模给哦一二值么命定没醒丁敏jsjjsimsspzmjsjjsimspskndndfndifkskmncnrjjsjdosskskmniodosndidksdjdjdjdnkskmniodoojsjjsimsspzmxnjddindjdjdndjdndjjsimsspzmxnjddindjdjdnddbdhdhns -->
+					</view>
+				</view>
+			<!-- </view> -->
+			
+		</vie>
+	</view>
+	<view class="point" wx:if="{{point}}">
+    <view class="box">
+      <view class="boxContent">
+        <view class="pointView">
+          提示
+        </view>
+        <view class="title">分享链接已生成.</view>
+        <view class="pointBtn">
+          <view class="firstBtn" bindtap="callOff">
+            取消
+          </view>
+          <view class="secondBtn">
+            去分享
+            <button class="sbBtn" open-type="share"></button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

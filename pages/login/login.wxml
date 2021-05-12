@@ -1,0 +1,48 @@
+<view class="app">
+		<view class="logo content" >
+			<view class="logoView content">
+				<image class="logoImg" src="/static/logo.png"></image>
+			</view>
+			<view class="logoText content">
+				<span>推广管理平台</span>
+			</view>
+		</view>
+		<form class="loginForm" bindsubmit='onClickApply'>
+			<view class="box">
+				<view class="login-column">
+					<view class="titleImg userName"><image src="/static/userName.png"></image></view>
+					<input class="loginInput" name="userName" value="{{username}}"  bindinput="inputedit" bindfocus="usernameFocus" bindblur="usernameBlur" data-name="username" />
+					<!-- placeholder="请输入账号" -->
+					<view class="loginPoint" wx:if="{{usernamePoint}}">请输入账号</view>
+				</view>
+				<view class="login-column">
+					<view class="titleImg password"><image src="/static/passWord.png"></image></view>
+					<input class="loginInput" type="password" value="{{password}}" bindinput="inputedit" bindfocus="passwordFocus" bindblur="passwordBlur" data-name="password" name="passWord" />
+					<view class="loginPoint" wx:if="{{passwordPoint}}">请输入密码</view>
+				</view>
+				
+				<view class="btnView">
+					<button class="btn" type="primary" form-type='submit'>确认登录</button>
+				</view>
+			</view>
+		</form>
+		<view class="point" wx:if="{{point}}">
+			<view class="box">
+				<view class="boxContent">
+					<view class="pointView">
+						提示
+					</view>
+					<view class="title">需要用户授权才能享受很好的微信服务.</view>
+					<view class="pointBtn">
+						<view class="firstBtn" bindtap="callOff">
+							取消
+						</view>
+						<view class="secondBtn">
+							授权
+							<button class="sbBtn" bindtap="shouquan" open-type='getUserInfo'></button>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>

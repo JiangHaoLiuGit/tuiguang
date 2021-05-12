@@ -1,0 +1,7 @@
+<view class="container">
+  <picker mode="multiSelector" placeholder="请输入年月日" bindchange="pickerChange" bindcolumnchange="pickerColumnChange" bindcancel ="pickerCancel" value="{{pickerIndex}}" range="{{pickerArray}}" range-key="{{'name'}}">
+    <view class='showFont'>
+      {{date}}
+    </view>
+  </picker>
+</view>

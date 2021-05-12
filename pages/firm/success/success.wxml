@@ -1,0 +1,115 @@
+<!--pages/firm/success/success.wxml-->
+<view>
+  <view class="headTop" style="padding-top:{{navTop}}rpx;height:{{navBtnHeight}}rpx;line-height:{{navBtnHeight}}rpx;padding-bottom:{{navBtnBottom}}rpx">
+    <view class="img">
+      <view class="block" bindtap="navBack"></view>
+      <image class="to" src="../../../static/bigBack.png"></image>
+    </view>
+    
+    	<view class="view">{{frimObj.abbreviation}}</view>
+  </view>
+  <view class="top" style="margin-top:{{navHeight}}rpx">
+    <image src="/static/pic16.png"></image>
+    <view class="txt">
+      <text>申请注册</text>
+      <text>等待审核</text>
+      <text>审核成功</text>
+    </view>
+  </view>
+  <view class="center">
+    <view class="conten clearfix">
+      <text class="left">企业类型</text>
+      <text class="right">国有企业</text>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">营业执照</text>
+      <text class="right">{{frimObj.licenseCode}}</text>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">企业法人</text>
+      <text class="right">{{frimObj.legalPerson}}</text>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">法人身份证</text>
+      <text class="right">{{frimObj.legalCard}}</text>
+    </view>
+    <view wx:if="{{state == 0}}">
+      <view class="conten clearfix">
+        <text class="left">法人手机</text>
+        <text class="right">{{frimObj.authorizedPhone}}</text>
+      </view>
+    </view>
+    <view wx:if="{{state == 1}}">
+      <view class="conten clearfix">
+        <text class="left">被授权人</text>
+        <text class="right">{{frimObj.authorizedName}}</text>
+      </view>
+      <view class="conten clearfix">
+        <text class="left">被授权人手机</text>
+        <text class="right">{{frimObj.authorizedPhone}}</text>
+      </view>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">企业附件</text>
+    </view>
+    <view class="pic">
+      <view class="box">
+        <view class="img">
+          <image src="{{frimObj.licenseUrl}}" data-value="{{frimObj.licenseUrl}}" bindtap="succ" mode="aspectFit"></image>
+        </view>
+        <text>营业执照</text>
+      </view>
+      <view class="box" wx:if="{{state == 1}}">
+        <view class="img" >
+          <image src="{{frimObj.authorizedCardUrl}}" data-value="{{frimObj.authorizedCardUrl}}" bindtap="succ" mode="aspectFit"></image>
+        </view>
+        <text>授权书</text>
+      </view>
+      <view class="box">
+        <view class="img">
+          <image src="{{frimObj.legalCardUrl}}" data-value="{{frimObj.legalCardUrl}}" bindtap="succ" mode="aspectFit"></image>
+        </view>
+        <text>法人身份证</text>
+      </view>
+    </view>
+  </view>
+  <view class="center">
+    <view class="conten clearfix">
+      <text class="left">VIP等级</text>
+
+      <image wx:if="{{frimObj.preferentialGradeId == 1}}" class="right img" src="/static/pic36.png"></image>
+      <image wx:elif="{{frimObj.preferentialGradeId == 2}}" class="right img" src="/static/pic35.png"></image>
+      <image wx:elif="{{frimObj.preferentialGradeId == 3}}" class="right img" src="/static/pic15.png"></image>
+      <image wx:elif="{{frimObj.preferentialGradeId == 4}}" class="right img" src="/static/pic37.png"></image>
+      <image wx:elif="{{frimObj.preferentialGradeId == 5}}" class="right img" src="/static/pic38.png"></image>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">有效期</text>
+      <text class="right">{{frimObj.icenseEffectiv}}</text>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">开始时间</text>
+      <text class="right">{{frimObj.icenseEffectivStart}}</text>
+    </view>
+    <view class="conten clearfix">
+      <text class="left">到期时间</text>
+      <text class="right">{{frimObj.icenseEffectivEnd}}</text>
+    </view>
+  </view>
+  <view class="center">
+    <view class="conten clearfix">
+      <text class="left">审核时间</text>
+      <text class="right">{{frimObj.auditDate}}</text>
+    </view>
+    <!-- <view class="conten clearfix">
+      <text class="left">审核人</text>
+      <text class="right">焦小鹏</text>
+    </view> -->
+  </view>
+  <button class="btn" bindtap="return">返回</button>
+</view>
+<view class="blockBox" wx:if="{{hidd3 == true}}">
+  <view class="por por3" catchtap="por3">
+    <image src="{{imgSrc}}" bindload="imageLoad" data-index="0" style="width:{{imagesWidth}}rpx;height:{{imagesHeight}}rpx;" mode="widthFix"></image>
+  </view>
+</view>

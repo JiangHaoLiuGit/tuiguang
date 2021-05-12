@@ -1,0 +1,43 @@
+<view class="spread">
+  <view class="headTop" style="padding-top:{{navTop}}rpx;height:{{navBtnHeight}}rpx;line-height:{{navBtnHeight}}rpx;padding-bottom:{{navBtnBottom}}rpx">
+    <view class="img">
+      <view class="block" bindtap="navBack"></view>
+      <image class="to" src="../../../static/bigBack.png"></image>
+    </view>
+    <view class="view">生成企业推广码</view>
+  </view>
+  <form class="loginForm" bindsubmit="onClickApply">
+    <view class="firm firmName marginTop" style="margin-top:{{navHeight}}rpx">
+      <view class="name">企业名称：</view>
+      <input type="text" class="input" name="name" bindblur="inputedit" value="{{firmName}}"  data-name="firmName" auto-focus placeholder="请输入企业全称" />
+      <text class="text" wx:if="{{text}}">{{textName}}</text>
+    </view>
+    <view class="firm firmPact">
+      <view class="name">平台协议：</view>
+      
+      <picker bindchange="bindPickerChange" name="pick" value="{{index}}" range="{{array}}" class="input">
+        <view class="text">{{index}}</view><image class="last" src="/static/last.png"></image>
+      </picker>
+    </view>
+    <button type="primary" disabled="{{btnDisabled}}" class="btn" bindtap="goBtn">生成并分享</button>
+  </form>
+  <view class="point" wx:if="{{point}}">
+    <view class="box">
+      <view class="boxContent">
+        <view class="pointView">
+          提示
+        </view>
+        <view class="title">分享链接已生成.</view>
+        <view class="pointBtn">
+          <view class="firstBtn" bindtap="callOff">
+            取消
+          </view>
+          <view class="secondBtn">
+            去分享
+            <button class="sbBtn" open-type="share"></button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

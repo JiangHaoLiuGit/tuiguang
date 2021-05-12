@@ -1,0 +1,209 @@
+/* pages/firm/pending/pending.wxss */
+.top{
+  padding: 18rpx 80rpx 14rpx;
+  text-align: center;
+  width: 750rpx;
+  height: 100rpx;
+  margin: 128rpx auto 0;
+  background-color: #fff;
+}
+.top image{
+  width: 530rpx;
+  height: 32rpx;
+}
+.top .txt{
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top: -17rpx;
+}
+.top .txt text{
+  font-size: 24rpx;
+  line-height: 32rpx;
+  color: #2E95FA;
+}
+.top .txt text.color{
+  color: #999999;
+}
+.center{
+  margin-top: 40rpx;
+}
+.center .conten{
+  width: 750rpx;
+  height: 72rpx;
+  color: #666;
+  font-size: 28rpx;
+  
+  padding: 0 30rpx;
+  background: #ffff;
+  margin-bottom: 2rpx;
+}
+.center .conten text{
+  line-height: 38rpx;
+  padding-top: 16rpx;
+}
+.center .pic{
+  padding:18rpx 86rpx 12rpx;
+  display: flex;
+  justify-content:space-around;
+  background: #fff;
+}
+.center .pic .box{
+  width: 160rpx;
+}
+.center .pic .img{
+  width: 160rpx;
+  height: 160rpx;
+  background:#E2E2E2;
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  border-radius: 8rpx;
+}
+.center .pic .img image{
+  max-width: 142rpx;
+  max-height: 144rpx;
+}
+.center .pic text{
+  color: #666;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  display: inline-block;
+  width: 160rpx;
+  text-align: center;
+}
+.center .butt{
+  margin-top: 180rpx;
+  padding: 0 74rpx;
+}
+.center .butt button{
+  width: 260rpx;
+  height: 92rpx;
+  box-shadow: 0px 0px 37px rgba(0, 0, 0, 0.05);
+  font-size: 40rpx;
+  line-height: 92rpx;
+  border-radius: 8rpx;
+  border: none;
+}
+.center .butt .success{
+  background: #2E95FA;
+  color: #fff;
+}
+.center .butt .fail{
+  background: #ccc;
+  color: #333333;
+}
+.blockBox{
+  width: 750rpx;
+  /* 667px */
+  height: 100vh;
+  background: rgba(0,0,0,.5);
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+.blockBox .por{
+  width: 750rpx;
+  height: 100vh;
+}
+.blockBox .child{
+  bottom: 0;
+  left: 0;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  background: #fff;
+  width: 750rpx;
+  padding: 18rpx 30rpx 36rpx 30rpx ;
+}
+.blockBox .child .title{
+  display: inline-block;
+  width: 100%;
+  color: #2E95FA;
+  font-size: 36rpx;
+  line-height: 48rpx;
+  margin-bottom: 22rpx;
+  text-align: center;
+}
+.blockBox .child .tit{
+  padding-bottom: 10rpx;
+  border-bottom: 2rpx solid #E3E3E3;
+  color: #333333;
+  font-size: 28rpx;
+  line-height: 38rpx;
+  position: relative;
+}
+.blockBox .child .tit textarea{
+  width: 690rpx;
+  min-height: 256rpx;
+  border: 2rpx solid #E3E3E3;
+  border-radius: 8rpx;
+  padding: 24rpx 24rpx 30rpx;
+  margin-top: 16rpx;
+  margin-bottom: 10rpx;
+  box-sizing: border-box;
+}
+
+.blockBox .child .tit .viewNumber{
+  position: absolute;
+  bottom: 30rpx;
+  right: 10rpx;
+  z-index: 10;
+  color: #999;
+}
+.blockBox .child .tit .viewNumber.red{
+  color: red;
+}
+.blockBox .child .switch{
+  margin-top: 15rpx;
+}
+.blockBox .child .check{
+  padding: 0 40rpx;
+  margin-top: 24rpx;
+}
+.blockBox .child .check .group{
+  display: flex;
+  justify-content: space-between;
+}
+.blockBox .child .check label{
+  color: #333333;
+  font-size: 28rpx;
+  line-height: 38rpx;
+}
+.blockBox .child .check label .checkbox{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+}
+.blockBox .child button{
+  height: 92rpx;
+  width: 100%;
+  border-radius: 8rpx;
+  background: #2E95FA;
+  line-height: 92rpx;
+  font-size: 40rpx;
+  margin-top: 65rpx;
+  color: #fff;
+  
+}
+.blockBox .child button[disabled]{
+  background: #CCCCCC;
+  color: #666666;
+}
+.blockBox .por.por3{
+  width: 750rpx;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.blockBox .por.por3 image{
+  max-width: 700rpx;
+  max-height: 90vh;
+}
+.check van-radio-group van-radio{
+  width:50%;
+  display: inline-block;
+  margin-bottom: 20rpx;
+}

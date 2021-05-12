@@ -1,0 +1,259 @@
+/* pages/firmRegist/firmRegist.wxss */
+page>view{
+  padding-top: 18rpx;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.xieyi{
+  margin-bottom: 50rpx;
+}
+.xieyi image{
+  width: 40rpx;
+  margin-right: 16rpx;
+  height: 40rpx;
+}
+.xieyi text{
+  font-size: 28rpx;
+  line-height: 38rpx;
+  color: #666;
+  float: right;
+}
+.xieyi view.button{
+  background: #FFAA3C;
+  height: 36rpx;
+  width: 104rpx;
+  color: #fafafa;
+  font-size: 24rpx;
+  border-radius: 4rpx;
+}
+.formContent{
+  margin-top: 36rpx;
+
+}
+.formContent text{
+  font-size: 28rpx;
+  line-height: 38rpx;
+  color: #333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+.formContent input,.formContent picker{
+  height: 80rpx;
+  border: 2rpx solid #E3E3E3;
+  border-radius: 8rpx;
+  background-color: #fff;
+  padding-left: 20rpx;
+  position: relative;
+  z-index: 10;
+}
+.formContent picker{
+  background-color: transparent;
+}
+.formContent picker image.last{
+  position: absolute;
+  top: 35rpx;
+  right: 35rpx;
+  width: 16rpx;
+  height: 9rpx;
+  z-index: 1;
+}
+.formContent picker .text{
+  width: 100%;
+  height: 80rpx;
+  display: block;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.formContent input[disabled]{
+  background-color: #E3E3E3;
+}
+.formContent .box{
+  margin-top: 10rpx;
+  padding: 14rpx 22rpx 12rpx 26rpx;
+  background: #fff;
+  border: 2px dashed #E3E3E3;
+}
+.ge{
+  
+}
+.formContent .box .addImg{
+  width: 140rpx;
+  height: 140rpx;
+  background: #E8E8E8;
+}
+.formContent .box .addImg .clickImg{
+  width: 80rpx;
+  height: 80rpx;
+}
+.formContent .box .addImg .image{
+  max-width: 140rpx;
+  max-height: 140rpx;
+}
+.formContent .box .viewText{
+  padding-left: 14rpx;
+}
+.formContent .box .viewText text{
+  display: block;
+  margin-bottom: 0;
+}
+.formContent .box .viewText text.head{
+  font-size: 28rpx;
+  color: #2E95FA;
+  line-height: 34rpx;
+}
+.formContent .box .viewText text.txt{
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 34rpx;
+}
+.formContent .box .caseImg{
+  height: 144rpx;
+  width: 97rpx;
+  border: 2px dashed #E3E3E3;
+}
+.formContent .box.idCard .addImg{
+  width: 234rpx;
+}
+.formContent .box.idCard .addImg .clickImg{
+  width: 234rpx;
+  height: 140rpx;
+}
+.formContent .box.idCard .addImg .image{
+  max-width: 234rpx;
+  max-height: 140rpx;
+}
+.formContent .box.idCard .viewText{
+  padding-left: 84rpx;
+  padding-top: 16rpx;
+}
+.formContent .phoneView{
+  margin-bottom: 20rpx;
+}
+.formContent .phoneView .text{
+  width: 500rpx;
+}
+.formContent .phoneView .text.sucess{
+  color: #2AC980;
+}
+.formContent .phoneView .text.fail{
+  color: red;
+}
+.formContent .phoneView button{
+  width: 182rpx;
+  height: 80rpx;
+  background: #FC5E4B;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  color: #fff;
+  margin-top: 0;
+}
+view.switch{
+  margin-top: 40rpx;
+  position: relative;
+}
+
+view.switch .s{
+  position: absolute;
+  bottom: -20rpx;
+  width: 750rpx;
+  height: 10rpx;
+  background: #E3E3E3;
+  left: -30rpx;
+}
+.formContent.por{
+  position: relative;
+}
+.formContent .txt.poa{
+  position: absolute;
+  bottom: 0;
+  left: 30rpx;
+  font-size: 28rpx;
+  line-height: 38rpx;
+  color: #696969;
+  z-index: 10;
+}
+view.switch switch{
+  /* width: 100rpx !important;
+  height: 40rpx !important; */
+}
+/* false的样式 */
+view.switch switch::before{
+  width: 100rpx !important;
+  height: 40rpx !important;
+}
+/* true的样式 */
+view.switch switch::after{
+  width: 57rpx !important;
+  height: 40rpx !important;
+}
+form button{
+  background-color: #2E95FA;
+  font-size: 40rpx;
+  color: #fff;
+}
+form button.submit{
+  margin-top: 48rpx;
+  margin-bottom: 42rpx;
+}
+.pact{
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 12;
+  background: #fff;
+  padding-top: 200rpx;
+}
+.pact .title{
+  font-size: 40rpx;
+  line-height: 60rpx;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+  text-align:center;
+}
+.failContent{
+  font-size: 28rpx;
+  line-height: 38rpx;
+  color: red;
+  word-wrap: break-word;
+}
+.failContent text{
+  display: block;
+}
+.pact .contents{
+  text-indent: 2em;
+  color: #333;
+  font-size: 32rpx;
+  line-height: 42rpx;
+  width: 100%;
+  padding: 0 30rpx 50rpx;
+  overflow-y:scroll;
+  max-height: calc(100vh - 170rpx - 150rpx);
+}
+.pact .btn{
+  position: absolute;
+  top: 180rpx;
+  right: 30rpx;
+}
+.pact .btn image{
+  height: 40rpx;
+  width: 40rpx;
+  transform:rotate(45deg);
+
+}
+.formContent{
+  position: relative;
+}
+.formContent .viewNumber{
+  position: absolute;
+  bottom: -54rpx;
+  right: 10rpx;
+  z-index: 10;
+  color: #999;
+}
+.formContent .viewNumber.red{
+  color: red;
+}

@@ -1,0 +1,181 @@
+<!--pages/firmRegist/firmRegist.wxml-->
+<view>
+  <view class="headTop" style="padding-top:{{navTop}}rpx;height:{{navBtnHeight}}rpx;line-height:{{navBtnHeight}}rpx;padding-bottom:{{navBtnBottom}}rpx">
+    <!-- <image class="to" src="../../../static/bigBack.png" class="left" bindtap="navBack"></image> -->
+    <view class="view">生成企业推广码</view>
+  </view>
+  <view class="pact" wx:if="{{pactBlean}}">
+    <view class="btn" bindtap="pactBtn">
+      <image src="../../../static/pic13.png"></image>
+    </view>
+    <view class="title">{{pact.name}}</view>
+    <view class="contents">
+      {{pact.content}}
+    </view>
+  </view>
+  <view class="xieyi marginTop clearfix" style="margin-top:{{navHeight}}rpx">
+    <view class="left">
+      <image class="ge" src="../../../static/pic08.png"></image>
+      <text>关于企业加盟1号协议</text>
+    </view>
+    <view class="right">
+      <view class="contenter button" bindtap="pactBtnOpen">查看</view>
+    </view>
+  </view>
+  <form bindsubmit="formSubmit">
+    <text wx:if="{{content != ''}}" class="failContent"><text>注册失败原因:</text><text>{{content}}</text></text>
+    <view class="formContent">
+      <text>企业名称：</text>
+      <input type="text" bindinput="inputedit" data-name="firmName" name="firmName" value="{{firmName}}" disabled="true" class="text"/>
+    </view>
+    <view class="formContent">
+      <text>企业类型：</text>
+      <picker bindchange="bindPickerChange" name="pick" value="{{arrayIndex}}" range="{{array}}" class="input">
+        <view class="text">{{arrayIndex}}</view><image class="last" src="/static/last.png"></image>
+      </picker>
+    </view>
+    <view class="formContent">
+      <text>企业简称：</text>
+      <input type="text" value="{{name5}}" bindinput="inputedit" data-name="name5" name="name5" placeholder="企业简称" class="text"/>
+      <view class="viewNumber red" wx:if="{{jianBlean}}">
+        请控制到1-10位之间
+      </view>
+    </view>
+    <view class="formContent">
+      <text>营业执照：</text>
+      <input type="number" value="{{yinyeId}}" bindinput="inputedit" data-name="yinyeId" name="yinyeId" maxlength="20" placeholder="营业执照编码" class="text"/>
+      <view class="box clearfix">
+        <view class="left">
+          <view class="addImg left contenter" bindtap="addImg" data-img="yinye">
+            <image class="clickImg" wx:if="{{yinye == ''}}" src="../../../static/pic13.png"></image>
+            <image class="image" wx:else src="{{yinye}}" mode="aspectFit"></image>
+          </view>
+          <view class="viewText right">
+            <text class="head" bindtap="addImg" data-img="yinye">点击上传营业执照</text>
+            <text class="txt">注意营业执照的清晰度</text>
+            <text class="txt">注意营业执照完整度</text>
+            <text class="txt">注意企业名称和营业执照名称一致</text>
+          </view>
+        </view>
+        <image class="caseImg right" src="../../../static/pic10.png"></image>
+      </view>
+    </view>
+    
+    
+    <view class="formContent por">
+      <text>公司成立日期：</text>
+      <!-- <image slot="back" @tap="goBack" class="navImg" src="../../../static/pic13.png"></image> -->
+      <text class="poa txt" wx:if="{{endedTime1 == ''}}">请输入年月日</text>
+      <timerPicker tim=""  bind:onPickerChange="onPickerChange3" data-index="1" date="{{endedTime1}}"></timerPicker>
+    </view>
+    <view class="formContent por">
+      <text>营业起始日期：</text>
+      <text class="poa txt" wx:if="{{endedTime2 == ''}}">请输入年月日</text>
+      <timerPicker tim="" bind:onPickerChange="onPickerChange3" data-index="2" date="{{endedTime2}}"></timerPicker>
+    </view>
+    <view class="formContent por">
+      <text>营业到期日期：</text>
+      <text class="poa txt" wx:if="{{endedTime3 == ''}}">请输入年月日</text>
+      <timerPicker tim="长期" date="{{endedTime3}}" bind:onPickerChange="onPickerChange3" data-index="3"></timerPicker>
+    </view>
+
+    <view class="formContent">
+      <text>企业法人：</text>
+      <input type="text" value="{{name1}}" bindinput="inputedit" data-name="name1" name="name1" placeholder="企业法人姓名" class="text"/>
+      <view class="viewNumber red" wx:if="{{nameBlean1}}">
+        请控制到1-5位之间
+      </view>
+    </view>
+    <view class="formContent">
+      <text>法人身份证：</text>
+      <input type="idcard" value="{{shenfenId}}" bindinput="inputedit" data-name="shenfenId" name="shenfenId" placeholder="身份证号码" class="text"/>
+      <view class="box idCard clearfix">
+        <view class="left">
+          <view class="addImg left contenter" bindtap="addImg" data-img="shenfen">
+            <image class="clickImg" wx:if="{{shenfen == ''}}" src="../../../static/pic09.png"></image>
+            <image class="image" wx:else  src="{{shenfen}}" mode="aspectFit"></image>
+          </view>
+          <view class="viewText right">
+            <text class="head" bindtap="addImg" data-img="shenfen">点击上传 法人身份证</text>
+            <text class="txt">身份证信息清晰可见</text>
+            <text class="txt">大头像清晰</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="formContent" hidden="{{switchChecked}}">
+      <text>法人手机号码：</text>
+      <view class="phoneView clearfix">
+        <input type="number" name="name2" value="{{name2}}" bindinput="inputedit" data-name="name2" placeholder="手机号码" maxlength="11" bindblur="iphoneYanBlur" class="text left {{name2Status == true?'sucess':''}}{{name2Status == false&&name2Status != ''?'fail':''}}"/>
+        <button class="contenter right" data-name="1" bindtap="yan">{{yanzhen}}</button>
+      </view>
+      <input type="number" name="name2Id" value="{{name2Id}}" bindinput="inputedit" data-name="name2Id" bindblur="yanCode" maxlength="4" placeholder="请输入手机验证码" class="text"/>
+    </view>
+    <view class="switch clearfix">
+      <text class="left">是否授权注册</text>
+      <i-switch class="right" value="{{switchChecked}}" size="default" bind:change="switchChange" slot="footer">
+          <view slot="open">是</view>
+          <view slot="close">否</view>
+      </i-switch>
+      <!-- <switch class="right" color="#2E95FA" checked="{{switchChecked}}" bindchange="switchChange"/> -->
+      <view class="s"></view>
+    </view>
+    <view class="formContent" hidden="{{!switchChecked}}">
+      <view class="formContent">
+        <text>被授权人：</text>
+        <input type="text" value="{{name3}}" bindinput="inputedit" data-name="name3" name="name3" placeholder="被授权人姓名" class="text"/>
+        <view class="viewNumber red" wx:if="{{nameBlean3}}">
+          请控制到1-5位之间
+        </view>
+      </view>
+      <view class="formContent">
+        <text>公司法人授权书：</text>
+        <view class="box clearfix">
+          <view class="left">
+            <view class="addImg left contenter" bindtap="addImg" data-img="shouquan">
+              <image class="clickImg" wx:if="{{shouquan == ''}}" src="../../../static/pic13.png"></image>
+              <image class="image" wx:else src="{{shouquan}}" mode="aspectFit"></image>
+            </view>
+            <view class="viewText right">
+              <text class="head" bindtap="addImg" data-img="shouquan">点击上传法人授权书</text>
+              <text class="txt">注意授权书的清晰度</text>
+              <text class="txt">注意授权书完整度</text>
+              <text class="txt">注意授权书必须有企业公章</text>
+            </view>
+          </view>
+          <image class="caseImg right" src="../../../static/pic12.png"></image>
+        </view>
+      </view>
+      <view class="formContent">
+        <text>被授权人手机号码：</text>
+        <view class="phoneView clearfix">
+          <input type="number" name="name4" value="{{name4}}" bindinput="inputedit" data-name="name4" placeholder="手机号码" maxlength="11" bindblur="iphoneYanBlur" class="text left {{name4Status == true?'sucess':''}}{{name4Status == false&&name4Status != ''?'fail':''}}"/>
+          <button class="contenter right" data-name="2" bindtap="yan">{{yanzhen}}</button>
+        </view>
+        <input type="number" name="name4Id" value="{{name4Id}}" bindinput="inputedit" data-name="name4Id" bindblur="yanCode" maxlength="4" placeholder="请输入手机验证码" class="text"/>
+      </view>
+    </view>
+
+    <!-- disabled -->
+    <button form-type="submit" class="submit">确认提交</button>
+
+  </form>
+  <view class="point" wx:if="{{point}}">
+    <view class="box">
+      <view class="boxContent">
+        <view class="pointView">
+          提示
+        </view>
+        <view class="title">本人同意并且授权平台上传身份证，营业执照照片，用于用户注册功能</view>
+        <view class="pointBtn">
+          <navigator class="firstBtn" target="miniProgram" open-type="exit">
+            退出小程序
+          </navigator>
+          <view class="secondBtn" bindtap="callOn">
+            继续注册
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
